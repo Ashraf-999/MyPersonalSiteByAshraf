@@ -20,14 +20,36 @@ async function GradualOpac(element, visible) {
 };
 
 function createBox() {
+    const boxHeight = 20;
     const box = document.createElement("div");
+    const laneCount = Math.max(
+        1,
+        Math.floor(boxLayer.clientHeight / boxHeight)
+    );
+
+    const occupiedLanes = new Set(
+        Array.from(boxLayer.querySelectorAll(".thin-box"))
+            .map(existingBox =>
+                Math.round(parseFloat(existingBox.style.top) / boxHeight)
+            )
+    );
+
+    const freeLanes = Array.from(
+        {length: laneCount},
+        (_, lane) => lane
+    ).filter(lane => !occupiedLanes.has(lane));
+
+    if (freeLanes.length === 0) return;
+
+    const randomIndex = Math.floor(Math.random() * freeLanes.length);
+    const lane = freeLanes[randomIndex];
+
     box.classList.add("thin-box");
-    const maxTop = Math.max(0, boxLayer.clientHeight - 20);
-    box.style.top = `${Math.random() * maxTop}px`;
+    box.style.top = `${lane * boxHeight}px`;
 
     box.addEventListener("animationend", () => {
-        box.remove(), {once: true}
-    });
+        box.remove();
+    }, { once: true });
 
     boxLayer.appendChild(box);
 };
