@@ -1,6 +1,7 @@
 const welcomeScreen = document.querySelector("#welcome-screen");
 const content = document.querySelector("#content");
 const backButton = document.querySelector("#backButton");
+const boxLayer = document.querySelector("#box-layer");
 
 async function GradualOpac(element, visible) {
     if (visible) {
@@ -18,6 +19,19 @@ async function GradualOpac(element, visible) {
     };
 };
 
+function createBox() {
+    const box = document.createElement("div");
+    box.classList.add("thin-box");
+    const maxTop = Math.max(0, boxLayer.clientHeight - 20);
+    box.style.top = `${Math.random() * maxTop}px`;
+
+    box.addEventListener("animationend", () => {
+        box.remove(), {once: true}
+    });
+
+    boxLayer.appendChild(box);
+};
+
 welcomeScreen.addEventListener("click", async () => {
     await GradualOpac(welcomeScreen, false);
     GradualOpac(content, true);
@@ -31,3 +45,6 @@ backButton.addEventListener("click", async() => {
     ]);
     GradualOpac(welcomeScreen, true);
 });
+
+createBox();
+setInterval(createBox, 400);
