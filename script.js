@@ -2,6 +2,14 @@ const welcomeScreen = document.querySelector("#welcome-screen");
 const content = document.querySelector("#content");
 const backButton = document.querySelector("#backButton");
 const boxLayer = document.querySelector("#box-layer");
+const aboutMe = document.querySelector("#AboutMe");
+const projects = document.querySelector("#Projects");
+const projectContent = document.querySelector("#projectContent");
+const projectLink = [
+    document.querySelector("#project1link")
+];
+
+
 
 async function GradualOpac(element, visible) {
     if (visible) {
@@ -54,18 +62,34 @@ function createBox() {
     boxLayer.appendChild(box);
 };
 
-welcomeScreen.addEventListener("click", async () => {
+aboutMe.addEventListener("click", async () => {
     await GradualOpac(welcomeScreen, false);
     GradualOpac(content, true);
     GradualOpac(backButton, true);
 });
 
+projects.addEventListener("click", async () => {
+    await GradualOpac(welcomeScreen, false);
+    GradualOpac(projectContent, true);
+    GradualOpac(backButton, true);
+})
+
 backButton.addEventListener("click", async() => {
     await Promise.all([
         GradualOpac(content, false),
+        GradualOpac(projectContent, false),
         GradualOpac(backButton, false)
     ]);
     GradualOpac(welcomeScreen, true);
+});
+
+
+projectLink[0].addEventListener("click", () => {
+    window.open(
+        "https://www.roblox.com/games/82414288448522/Obby-but-a-cat-chases-you",
+        "_blank",
+        "noopener,noreferrer"
+    )
 });
 
 createBox();

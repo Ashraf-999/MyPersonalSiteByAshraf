@@ -39,11 +39,11 @@ h1 {
     border: 5px solid #000000;
 }
 
-#projectImage{
-    height:10vw;
-    width: 10vw;
-    border:3px solid #f0efef;
-    border-radius: 50%;
+.projectImage{
+    height:150px;
+    width: 150px;
+    border:3px solid #000000;
+    border-radius: 25%;
 }
 
 #Size{
@@ -52,30 +52,19 @@ h1 {
 
 .div{
     position: absolute;
-    display: flex;
-    align-items: center;
-    text-align: center;
     top: 40%;
     left: 50%;
     transform: translateX(-50%);
     font-size: 1.1rem;
     background-color:#1d1c1c;
     padding: 1rem;
-    width: 95vw;
+    width: 90vw;
     border: 1px solid #000000;
     font-family: Georgia, serif;
     color: #FFFFFF;
     border-radius: 20px;
 }
 
-.div2{
-    font-size: 1.1rem;
-    padding: 1rem;
-    background-color:#1d1c1c;
-    height: 10vw;
-    width: 80vw;
-    border: 1px solid #000000;
-}
 
 .button-container{
     display: flex;
@@ -95,6 +84,17 @@ h1 {
     cursor: pointer;
 }
 
+.button2{
+    background-color: #1d1c1c;
+    border: 1px solid #000000;
+    color: #FFFFFF;
+    text-shadow: 0 0 10px #FFFFFF;
+    width: 50px;
+    height: 20px;
+    border-radius: 10%;
+    cursor: pointer;
+}
+
 .hidden {
     display: none;
 }
@@ -107,7 +107,7 @@ h1 {
     box-shadow: none;
     position: absolute;
     right: 5px;
-    top: 60%;
+    top: 34%;
     cursor: pointer;
 }
 
@@ -133,6 +133,10 @@ h1 {
     background: linear-gradient(to right, #0b0b0b, #2b2a2a);
     border: 1px solid #000000;
     animation: move-right 10s linear forwards;
+}
+
+.description {
+    margin-left: 15px;
 }
 
 @keyframes move-right {
