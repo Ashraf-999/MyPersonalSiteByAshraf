@@ -4,11 +4,22 @@ const backButton = document.querySelector("#backButton");
 const boxLayer = document.querySelector("#box-layer");
 const aboutMe = document.querySelector("#AboutMe");
 const projects = document.querySelector("#Projects");
+const Achievement = document.querySelector("#Achievements");
 const projectContent = document.querySelector("#projectContent");
+const AchievementContent = document.querySelector("#achievementContent");
 const projectLink = [
-    document.querySelector("#project1link")
+    document.querySelector("#project1link"),
+    document.querySelector("#project2link"),
+    document.querySelector("#project3link"),
+    document.querySelector("#project4link")
 ];
+const bottomText = document.querySelector(".bottom-text");
+const block = document.querySelector(".block");
+const pet = document.querySelector("#pet");
 
+function wait(milliseconds) {
+    return new Promise(resolve => setTimeout(resolve, milliseconds))
+};
 
 
 async function GradualOpac(element, visible) {
@@ -16,16 +27,17 @@ async function GradualOpac(element, visible) {
         element.classList.remove("hidden");
         for (let i = 0; i <= 1; i += 0.1) {
             element.style.opacity = i;
-            await new Promise(resolve => setTimeout(resolve, 50));
+            await wait(50);
         };
     } else {
         for (let i = 1; i >= 0; i -= 0.1) {
             element.style.opacity = i;
-            await new Promise(resolve => setTimeout(resolve, 50));
+            await wait(50);
         };
         element.classList.add("hidden");
     };
 };
+
 
 function createBox() {
     const boxHeight = 20;
@@ -62,35 +74,79 @@ function createBox() {
     boxLayer.appendChild(box);
 };
 
+function projectOpener(id, link) {
+    id.addEventListener("click", () => {
+        window.open(
+            link,
+            "_blank",
+            "noopener,noreferrer"
+        )
+    });
+};
+
+async function blinking() {
+    // wait random sec, set eye visible, wait 500 sec, make eye non visible
+    while (true) {
+        let random_num = Math.floor(Math.random() * 500) + 1500;
+        await wait(random_num);
+        block.classList.remove("hidden");
+        await wait(300);
+        block.classList.add("hidden");
+    };
+};
+
+blinking();
+
+
 aboutMe.addEventListener("click", async () => {
-    await GradualOpac(welcomeScreen, false);
+    await Promise.all([
+        GradualOpac(welcomeScreen, false),
+        GradualOpac(bottomText, false),
+        GradualOpac(pet, false)
+    ])
     GradualOpac(content, true);
     GradualOpac(backButton, true);
 });
 
 projects.addEventListener("click", async () => {
-    await GradualOpac(welcomeScreen, false);
+    await Promise.all([
+        GradualOpac(welcomeScreen, false),
+        GradualOpac(bottomText, false),
+        GradualOpac(pet, false)
+    ])
     GradualOpac(projectContent, true);
     GradualOpac(backButton, true);
-})
+});
+
+Achievement.addEventListener("click", async () => {
+    await Promise.all([
+        GradualOpac(welcomeScreen, false),
+        GradualOpac(backButton, false),
+        GradualOpac(pet, false)
+    ])
+    GradualOpac(AchievementContent, true);
+    GradualOpac(backButton, true);
+});
 
 backButton.addEventListener("click", async() => {
     await Promise.all([
         GradualOpac(content, false),
         GradualOpac(projectContent, false),
+        GradualOpac(AchievementContent, false),
         GradualOpac(backButton, false)
     ]);
     GradualOpac(welcomeScreen, true);
+    GradualOpac(bottomText, true);
+    GradualOpac(pet, true);
 });
 
+blinking();
 
-projectLink[0].addEventListener("click", () => {
-    window.open(
-        "https://www.roblox.com/games/82414288448522/Obby-but-a-cat-chases-you",
-        "_blank",
-        "noopener,noreferrer"
-    )
-});
+projectOpener(projectLink[0], "https://www.roblox.com/games/82414288448522/Obby-but-a-cat-chases-you");
+projectOpener(projectLink[1], "https://ashraf-999.github.io/DeepWorkClock/");
+projectOpener(projectLink[2], "https://ashrafmahin.itch.io/super-minigame");
+projectOpener(projectLink[3], "https://ashraf-999.github.io/Shortcut-Os/");
+
 
 createBox();
 setInterval(createBox, 400);

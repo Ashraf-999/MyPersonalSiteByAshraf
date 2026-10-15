@@ -26,7 +26,7 @@ h1 {
     display:flex;
     position: fixed;
     bottom: 20px;
-    left: 20px;
+    left: 40%;
     gap: 28vw;
 }
 
@@ -42,7 +42,7 @@ h1 {
 .projectImage{
     height:150px;
     width: 150px;
-    border:3px solid #000000;
+    border:3px solid #5e5d5d;
     border-radius: 25%;
 }
 
@@ -100,8 +100,8 @@ h1 {
 }
 
 .backButton {
-    width: 100px;
-    height: 40px;
+    width: 80px;
+    height: 30px;
     background: none;
     border: none;
     box-shadow: none;
@@ -137,6 +137,48 @@ h1 {
 
 .description {
     margin-left: 15px;
+    margin-top: 30px;
+}
+
+.description2 {
+    margin-left: 15px;
+    margin-top: 30px;
+    text-align: right;
+}
+
+.description2 .projectImage {
+    display: block;
+    margin-left: auto;
+}
+
+.AchievementImg {
+    Width: 90%;
+    Height: 790px;
+    display: block;
+    margin: 0 auto; 
+}
+
+#achievementContent h2 {
+    display: inline-block;
+    Border: 1px solid white;
+}
+
+.Dino {
+    width:300px;
+    height: 300px;
+    position: absolute;
+    bottom: 5px;
+}
+
+.block {
+    width: 20px;
+    height: 20px;
+    background-color: rgb(200,200,200);
+    border-radius: 50%;
+    z-index: -1;
+    position: absolute;
+    bottom: 202px;
+    left: 188px;
 }
 
 @keyframes move-right {
