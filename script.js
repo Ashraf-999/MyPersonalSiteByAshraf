@@ -14,8 +14,8 @@ const projectLink = [
     document.querySelector("#project4link")
 ];
 const bottomText = document.querySelector(".bottom-text");
-const block = document.querySelector(".block");
-const pet = document.querySelector("#pet");
+const Dino = document.querySelector("#Dino");
+const Dino2 = document.querySelector("#Dino2");
 
 function wait(milliseconds) {
     return new Promise(resolve => setTimeout(resolve, milliseconds))
@@ -87,16 +87,13 @@ function projectOpener(id, link) {
 async function blinking() {
     // wait random sec, set eye visible, wait 500 sec, make eye non visible
     while (true) {
-        let random_num = Math.floor(Math.random() * 500) + 1500;
+        let random_num = Math.floor(Math.random() * 1000) + 1500;
         await wait(random_num);
-        block.classList.remove("hidden");
+        Dino2.classList.remove("hidden");
         await wait(300);
-        block.classList.add("hidden");
+        Dino2.classList.add("hidden");
     };
 };
-
-blinking();
-
 
 aboutMe.addEventListener("click", async () => {
     await Promise.all([
@@ -138,6 +135,19 @@ backButton.addEventListener("click", async() => {
     GradualOpac(welcomeScreen, true);
     GradualOpac(bottomText, true);
     GradualOpac(pet, true);
+});
+
+window.addEventListener("pointermove", (event) => {
+    const Obj = Dino.getBoundingClientRect();
+    const centerX = Obj.left + Obj.width / 2;
+    const centerY = Obj.top + Obj.height / 2;
+
+    const x = event.clientX - centerX;
+    const y = event.clientY - centerY;
+    const angle = Math.atan2(y, x) * (180 / Math.PI);
+
+    Dino.style.transform = `rotate(${angle}deg)`;
+    Dino2.style.transform = `rotate(${angle}deg)`;
 });
 
 blinking();

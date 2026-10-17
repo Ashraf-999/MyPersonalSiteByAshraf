@@ -168,20 +168,16 @@ h1 {
     height: 300px;
     position: absolute;
     bottom: 5px;
-}
-
-.block {
-    width: 20px;
-    height: 20px;
-    background-color: rgb(200,200,200);
-    border-radius: 50%;
-    z-index: -1;
-    position: absolute;
-    bottom: 202px;
-    left: 188px;
+    transform-origin: center;
 }
 
 @keyframes move-right {
     from { transform: translateX(-100%);} 
     to { transform: translateX(calc(100vw + 100%));}
+}
+
+@media (max-width:600px) {
+    .button {
+        width: 90%;
+    }
 }
