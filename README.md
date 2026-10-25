@@ -1,7 +1,8 @@
 **Ashraf's Personal Website**
 
 It is a personal website to show off who I am, my projects, and my contact address.
-<img width="1907" height="858" alt="Screenshot 2026-10-11 123112" src="https://github.com/user-attachments/assets/8d1a328e-6770-49ff-bacb-dede04774f67" />
+<img width="1602" height="841" alt="image" src="https://github.com/user-attachments/assets/5a07a6d0-b71e-4e10-a100-22f2ea90f75b" />
+
 
 
 You can try out my website from here: <a href="https://ashraf-999.github.io/MyPersonalSiteByAshraf/" target="blank">Click Me</a>
