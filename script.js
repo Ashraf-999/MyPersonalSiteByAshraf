@@ -153,7 +153,7 @@ window.addEventListener("pointermove", (event) => {
 blinking();
 
 projectOpener(projectLink[0], "https://www.roblox.com/games/82414288448522/Obby-but-a-cat-chases-you");
-projectOpener(projectLink[1], "https://ashraf-999.github.io/Focus-core/");
+projectOpener(projectLink[1], "https://ashraf-999.github.io/Focus-Core/");
 projectOpener(projectLink[2], "https://ashrafmahin.itch.io/super-minigame");
 projectOpener(projectLink[3], "https://ashraf-999.github.io/Shortcut-Os/");
 
